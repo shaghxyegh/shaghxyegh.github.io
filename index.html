@@ -1,161 +1,148 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shaghayegh Shafiee - Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
-    <style>
-        /* Reset and Base */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Open Sans', sans-serif; line-height: 1.6; color: #333; background: #f9f9f9; }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Shaghayegh Shafiee — Portfolio</title>
+  <meta name="description" content="Personal portfolio based on the Canva site of Shaghayegh Shafiee" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--accent:#6C63FF;--muted:#666;--bg:#ffffff}
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial}
+    body{background:var(--bg);color:#111;line-height:1.5}
+    .container{max-width:1000px;margin:0 auto;padding:32px}
 
-        /* Typography */
-        h1, h2, h3 { font-family: 'Playfair Display', serif; }
-        h1 { font-size: 3rem; }
-        h2 { font-size: 2.5rem; margin-bottom: 1rem; }
+    /* Header */
+    header{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#8f8cff);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700}
+    nav a{margin-left:18px;color:var(--muted);text-decoration:none;font-weight:600}
 
-        /* Layout */
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        .section { padding: 80px 0; }
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 380px;gap:32px;align-items:center;margin-top:28px}
+    .hero h1{font-size:34px;margin:0 0 12px}
+    .hero p{color:var(--muted);margin:0 0 20px}
+    .cta{display:inline-block;padding:10px 16px;border-radius:10px;background:var(--accent);color:#fff;text-decoration:none;font-weight:700}
+    .profile-card{background:#f8f7ff;border-radius:14px;padding:20px;box-shadow:0 6px 20px rgba(108,99,255,0.12)}
+    .profile-card img{width:100%;border-radius:10px;display:block}
 
-        /* Header/Hero */
-        .hero { height: 100vh; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://via.placeholder.com/1920x1080?text=Hero+Image') center/cover; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: white; }
-        .navbar { position: absolute; top: 0; width: 100%; padding: 20px; display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.1); }
-        .nav-brand { font-size: 1.5rem; font-weight: bold; }
-        .nav-menu { list-style: none; display: flex; gap: 30px; }
-        .nav-menu a { color: white; text-decoration: none; transition: color 0.3s; }
-        .nav-menu a:hover { color: #ffd700; }
-        .hero-content { z-index: 1; }
-        .cta-btn { background: #ffd700; color: #333; border: none; padding: 15px 30px; font-size: 1.1rem; cursor: pointer; margin-top: 20px; border-radius: 5px; transition: background 0.3s; }
-        .cta-btn:hover { background: #ffed4e; }
+    /* Sections */
+    section{margin-top:48px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{padding:18px;border-radius:10px;background:#fff;border:1px solid #f0f0f3}
+    .card h3{margin:0 0 10px;font-size:18px}
+    .muted{color:var(--muted)}
 
-        /* About */
-        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
-        .about-image img { width: 100%; border-radius: 10px; }
-        @media (max-width: 768px) { .about-grid { grid-template-columns: 1fr; } }
+    /* Contact */
+    .contact-form{display:flex;flex-direction:column;gap:10px}
+    input,textarea{padding:10px;border-radius:8px;border:1px solid #e6e6ec;font-family:inherit}
+    button{padding:10px 14px;border-radius:10px;border:0;background:var(--accent);color:#fff;font-weight:700}
 
-        /* Portfolio */
-        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-        .portfolio-item { position: relative; overflow: hidden; border-radius: 10px; }
-        .portfolio-item img { width: 100%; height: 200px; object-fit: cover; }
-        .overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.7); color: white; display: flex; flex-direction: column; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s; }
-        .portfolio-item:hover .overlay { opacity: 1; }
+    /* Footer */
+    footer{margin-top:48px;padding:28px 0;border-top:1px solid #f0f0f3;color:var(--muted);font-size:14px}
 
-        /* Contact */
-        .contact-form { max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px; }
-        .contact-form input, .contact-form textarea { padding: 15px; border: 1px solid #ddd; border-radius: 5px; font-family: inherit; }
-        .contact-form button { background: #333; color: white; border: none; padding: 15px; cursor: pointer; border-radius: 5px; transition: background 0.3s; }
-        .contact-form button:hover { background: #555; }
-
-        /* Footer */
-        footer { text-align: center; padding: 20px; background: #333; color: white; }
-
-        /* Animations */
-        html { scroll-behavior: smooth; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        .section { animation: fadeIn 0.8s ease-out; }
-    </style>
+    /* Responsive */
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr;}
+      .grid{grid-template-columns:1fr}
+    }
+  </style>
 </head>
 <body>
-    <!-- Header/Hero Section -->
-    <header class="hero">
-        <nav class="navbar">
-            <div class="nav-brand">Shaghayegh Shafiee</div>
-            <ul class="nav-menu">
-                <li><a href="#about">About</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-        <div class="hero-content">
-            <h1>Creative Designer & Developer</h1>
-            <p>Building beautiful experiences with passion and precision.</p>
-            <button class="cta-btn">View Work</button>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">SS</div>
+        <div>
+          <div style="font-weight:700">Shaghayegh Shafiee</div>
+          <div style="font-size:13px;color:var(--muted)">Computer Engineer • NLP & ML</div>
         </div>
+      </div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
     </header>
 
-    <!-- About Section -->
-    <section id="about" class="section">
-        <div class="container">
-            <h2>About Me</h2>
-            <div class="about-grid">
-                <div class="about-text">
-                    <p>I'm a multidisciplinary designer based in [Your Location], specializing in UI/UX, graphic design, and web development. With [X] years of experience, I blend creativity with technical skills to craft engaging digital stories.</p>
-                    <ul>
-                        <li>Skills: Adobe Suite, Figma, HTML/CSS/JS</li>
-                        <li>Passions: Minimalist aesthetics, user-centered design</li>
-                    </ul>
-                </div>
-                <div class="about-image">
-                    <img src="https://via.placeholder.com/400x500?text=Your+Photo" alt="Profile Photo">
-                </div>
-            </div>
-        </div>
-    </section>
+    <main>
+      <section class="hero">
+        <div>
+          <h1>Hi — I'm Shaghayegh.<br><span style="color:var(--accent)">I build intelligent systems and teach NLP.</span></h1>
+          <p class="muted">I work on machine learning, information retrieval, and building practical NLP tools. I enjoy teaching, open-source, and data-driven research.</p>
+          <a class="cta" href="#projects">See my work</a>
 
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="section">
-        <div class="container">
-            <h2>Portfolio</h2>
-            <div class="portfolio-grid">
-                <div class="portfolio-item">
-                    <img src="https://via.placeholder.com/300x200?text=Project+1" alt="Project 1">
-                    <div class="overlay">
-                        <h3>Project One</h3>
-                        <p>Brief description of the project.</p>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="https://via.placeholder.com/300x200?text=Project+2" alt="Project 2">
-                    <div class="overlay">
-                        <h3>Project Two</h3>
-                        <p>Brief description of the project.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+          <section id="about">
+            <h2 style="margin-top:28px">About me</h2>
+            <p class="muted">I'm a computer engineer focused on NLP and recommender systems. I have experience with Python, Hugging Face, Elasticsearch/Kibana, and web frameworks. I enjoy turning research into practical tools and mentoring students.</p>
 
-    <!-- Contact Section -->
-    <section id="contact" class="section">
-        <div class="container">
-            <h2>Get in Touch</h2>
-            <form class="contact-form">
-                <input type="text" placeholder="Your Name" required>
-                <input type="email" placeholder="Your Email" required>
-                <textarea placeholder="Your Message" required></textarea>
-                <button type="submit">Send Message</button>
-            </form>
+            <div class="grid" style="margin-top:18px">
+              <div class="card">
+                <h3>Education</h3>
+                <p class="muted">B.Sc. Computer Engineering — Ferdowsi University of Mashhad</p>
+              </div>
+              <div class="card">
+                <h3>Skills</h3>
+                <p class="muted">Python, NLP, ML, Elasticsearch, Django, Flask</p>
+              </div>
+              <div class="card">
+                <h3>Interests</h3>
+                <p class="muted">Teaching, Research, Open-source</p>
+              </div>
+            </div>
+          </section>
+
         </div>
-    </section>
+
+        <aside class="profile-card">
+          <!-- Replace the src with your Canva image export or a hosted image -->
+          <img src="" alt="Profile">
+          <h3 style="margin:12px 0 6px">Shaghayegh Shafiee</h3>
+          <div class="muted">NLP researcher & teacher</div>
+        </aside>
+      </section>
+
+      <section id="projects">
+        <h2 style="margin-bottom:12px">Selected Projects</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Recommender for IEEE papers</h3>
+            <p class="muted">Built using Elasticsearch/Kibana and custom ranking models.</p>
+          </div>
+          <div class="card">
+            <h3>Document retrieval framework</h3>
+            <p class="muted">Interactive framework for indexing and searching documents with embeddings.</p>
+          </div>
+          <div class="card">
+            <h3>Persian summarization dataset</h3>
+            <p class="muted">Created and preprocessed a large Persian summarization dataset for research.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <h2 style="margin-bottom:12px">Contact</h2>
+        <p class="muted">Want to collaborate or hire me? Send a message.</p>
+        <form class="contact-form" action="mailto:shaghayegh@example.com" method="post" enctype="text/plain">
+          <input type="text" name="name" placeholder="Your name" required>
+          <input type="email" name="email" placeholder="Your email" required>
+          <textarea name="message" rows="5" placeholder="Message"></textarea>
+          <button type="submit">Send</button>
+        </form>
+      </section>
+
+    </main>
 
     <footer>
-        <p>&copy; 2025 Shaghayegh Shafiee. All rights reserved.</p>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+        <div>© <strong>Shaghayegh Shafiee</strong> — All rights reserved.</div>
+        <div style="color:var(--muted)">Built from a Canva layout — exported to a GitHub Pages template.</div>
+      </div>
     </footer>
 
-    <script>
-        // Smooth scrolling for nav links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // CTA button scroll to portfolio
-        document.querySelector('.cta-btn').addEventListener('click', () => {
-            document.querySelector('#portfolio').scrollIntoView({ behavior: 'smooth' });
-        });
-
-        // Form submission (placeholder)
-        document.querySelector('.contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Message sent! (Add real backend for production.)');
-            this.reset();
-        });
-    </script>
+  </div>
 </body>
 </html>
